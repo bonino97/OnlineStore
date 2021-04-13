@@ -5,3 +5,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export const SECRET_KEY = process.env.SECRET_KEY || '0nl1n3-st0r3';
+export enum COLLECTIONS {
+  USERS = 'users',
+}

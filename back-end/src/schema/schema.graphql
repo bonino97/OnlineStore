@@ -1,0 +1,54 @@
+"Query Definitions."
+type Query {
+  "List of users (Admins/Clients)"
+  users: ResultUsers
+}
+
+type Mutation {
+  register(user: UserInput!): User
+}
+
+"User Information"
+type User {
+  id: ID!
+  name: String!
+  lastName: String!
+  email: String!
+  password: String!
+  registerDate: String!
+  "Must have more than 18y/o"
+  birthday: String!
+  role: Role!
+}
+
+"User Input Information"
+input UserInput {
+  id: ID
+  name: String!
+  lastName: String!
+  email: String!
+  password: String!
+  registerDate: String
+  "Must have more than 18y/o"
+  birthday: String!
+  role: Role = CLIENT
+}
+
+enum Role {
+  CLIENT
+  ADMIN
+}
+
+"Interface to specify required properties on response"
+interface Result {
+  "Status of response."
+  status: Boolean!
+  message: String!
+}
+
+type ResultUsers implements Result {
+  "List of users (Admins/Clients)"
+  users: [User!]!
+  status: Boolean!
+  message: String!
+}
