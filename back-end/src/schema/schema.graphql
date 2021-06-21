@@ -2,6 +2,8 @@
 type Query {
   "List of users (Admins/Clients)"
   users: ResultUsers
+  "Login"
+  login(email: String!, password: String!): ResultLogin
 }
 
 type Mutation {
@@ -47,8 +49,15 @@ interface Result {
 }
 
 type ResultUsers implements Result {
-  "List of users (Admins/Clients)"
-  users: [User!]!
   status: Boolean!
   message: String!
+  "List of users (Admins/Clients)"
+  users: [User!]!
+}
+
+type ResultLogin implements Result {
+  status: Boolean!
+  message: String!
+  "User token"
+  token: String
 }

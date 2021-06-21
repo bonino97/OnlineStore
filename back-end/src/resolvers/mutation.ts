@@ -4,6 +4,14 @@ import { COLLECTIONS } from '../config/constants';
 const mutation: IResolvers = {
   Mutation: {
     async register(_, { user }, { db }, info) {
+      const userExist = await db
+        .collection(COLLECTIONS.USERS)
+        .findOne({ email: user.email });
+
+      if (userExist) {
+        return null;
+      }
+
       user.id = await generateUserId(db);
       user.registerDate = new Date().toISOString();
       return await db
