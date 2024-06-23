@@ -4,19 +4,42 @@ if (process.env.NODE_ENV !== 'production') {
   const env = environment;
 }
 
-export const SECRET_KEY = process.env.SECRET_KEY || '0nl1n3-st0r3';
+export const SECRET_KEY =
+  process.env.SECRET || 'AnartzMugikaCursoGraphQLTiendaOnline';
+
 export enum COLLECTIONS {
   USERS = 'users',
+  GENRES = 'genres',
+  TAGS = 'tags',
+  SHOP_PRODUCT = 'products_platforms',
+  PRODUCTS = 'products',
+  PLATFORMS = 'platforms'
 }
+
 
 export enum MESSAGES {
-  VERIFY_TOKEN_FAILED = 'Invalid token, sign in again.',
+  TOKEN_VERICATION_FAILED = 'token no valido, inicia sesion de nuevo'
 }
 
-export enum EXPIRE_TIME {
-  HOUR = 60 * 60,
-  DAY = HOUR * 24,
-  FIFTEEN_MINS = HOUR / 4,
-  HALF_HOUR = HOUR / 2,
-  THREE_DAYS = DAY * 3,
+/**
+ * H = Horas
+ * M = Minutos
+ * D = Días
+ */
+export enum EXPIRETIME {
+  H1 = 60 * 60,
+  H24 = 24 * H1,
+  M15 = H1 / 4,
+  M20 = H1 / 3,
+  D3 = H24 * 3
+}
+
+export enum ACTIVE_VALUES_FILTER {
+  ALL = 'ALL',
+  INACTIVE = 'INACTIVE',
+  ACTIVE = 'ACTIVE'
+}
+
+export enum SUBSCRIPTIONS_EVENT {
+  UPDATE_STOCK_PRODUCT = 'UPDATE_STOCK_PRODUCT'
 }

@@ -1,18 +1,24 @@
-//Internal Modules
-import { NgModule } from '@angular/core';
+import { GraphqlModule } from '@graphql/modules/graphql.module';
+import { PublicModule } from './@public/pages/public.module';
+import { AdminModule } from './@admin/pages/admin.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
 
-//External Modules
-
-//Components
-import { AppComponent } from 'src/app/app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AdminModule,
+    PublicModule,
+    AppRoutingModule,
+    GraphqlModule
+  ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
